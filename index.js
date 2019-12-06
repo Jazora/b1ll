@@ -36,13 +36,13 @@ b1ll.on('ready', () => {
 });
 
 b1ll.on('message', (receivedMessage) => {
-    if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
+    if (receivedMessage.author == b1ll.user) { // Prevent bot from responding to its own messages
         return
     }
     
-	var VoiceRole = user.guild.roles.find(role => role.name === "B1LL");
+	var VoiceRole = receivedMessage.guild.roles.find(role => role.name === "B1LL");
 
-	if (user.member.roles.has(VoiceRole.id)) {
+	if (receivedMessage.member.roles.has(VoiceRole.id)) {
 		if (receivedMessage.content.startsWith("!")) {
 			processCommand(receivedMessage)
 		}
@@ -50,7 +50,7 @@ b1ll.on('message', (receivedMessage) => {
 		{
 			if (contains.call(VoiceAssistedUsers, message.author))
 			{
-				user.channel.send(message.content, { tts: true });
+				receivedMessage.channel.send(message.content, { tts: true });
 				message.delete();
 			}
 		}
