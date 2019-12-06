@@ -43,7 +43,7 @@ b1ll.on('message', (receivedMessage) => {
 	var VoiceRole = receivedMessage.guild.roles.find(role => role.name === "B1LL");
 
 	if (receivedMessage.member.roles.has(VoiceRole.id)) {
-		if (receivedMessage.content.startsWith("!")) {
+		if (receivedMessage.content.startsWith("!!!")) {
 			processCommand(receivedMessage)
 		}
 		else
@@ -58,7 +58,7 @@ b1ll.on('message', (receivedMessage) => {
 })
 
 function processCommand(receivedMessage) {
-    let fullCommand = receivedMessage.content.substr(1)
+    let fullCommand = receivedMessage.content.substr(3)
     let splitCommand = fullCommand.split(" ")
     let primaryCommand = splitCommand[0]
     let arguments = splitCommand.slice(1)
