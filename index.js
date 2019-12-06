@@ -38,7 +38,7 @@ b1ll.on('ready', () => {
 b1ll.on('message', function (user, userID, channelID, message, evt) {
 	var VoiceRole = user.guild.roles.find(role => role.name === "B1LL");
 	
-	if (message.member.roles.has(VoiceRole.id)) {
+	if (user.member.roles.has(VoiceRole.id)) {
 		
 		if (message.substring(0, 1) == '!') {
 			var args = message.substring(1).split(' ');
@@ -48,14 +48,14 @@ b1ll.on('message', function (user, userID, channelID, message, evt) {
 			
 			if (cmd == 'voiceon')
 			{
-				message.reply('Ill be your voice!');
+				user.reply('Ill be your voice!');
 				VoiceAssistedUsers.push(message.author);
 			}
 			else
 			{
 				if (contains.call(VoiceAssistedUsers, message.author))
 				{
-					message.channel.send(message.content, { tts: true });
+					user.channel.send(message.content, { tts: true });
 					message.delete();
 				}
 			}
