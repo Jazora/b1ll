@@ -48,10 +48,10 @@ b1ll.on('message', (receivedMessage) => {
 		}
 		else
 		{
-			if (contains.call(VoiceAssistedUsers, message.author))
+			if (contains.call(VoiceAssistedUsers, receivedMessage.author))
 			{
-				receivedMessage.channel.send(message.content, { tts: true });
-				message.delete();
+				receivedMessage.channel.send(receivedMessage.content, { tts: true });
+				receivedMessage.delete();
 			}
 		}
 	}
