@@ -35,31 +35,38 @@ b1ll.on('ready', () => {
     console.log('B1LL is Online');
 });
 
-b1ll.on('message', function (user, userID, channelID, message, evt) {
+b1ll.on('message', (receivedMessage) => {
+    if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
+        return
+    }
+    
 	var VoiceRole = user.guild.roles.find(role => role.name === "B1LL");
 
 	if (user.member.roles.has(VoiceRole.id)) {
-		if (user.substr(0, 1) == '!') {
-			var args = user.substr(1).split(' ');
-			var cmd = args[0];
-		   
-			args = args.splice(1);
-			
-			if (cmd == 'voiceon')
+		if (receivedMessage.content.startsWith("!")) {
+			processCommand(receivedMessage)
+		}
+		else
+		{
+			if (contains.call(VoiceAssistedUsers, message.author))
 			{
-				user.reply('Ill be your voice!');
-				VoiceAssistedUsers.push(message.author);
-			}
-			else
-			{
-				if (contains.call(VoiceAssistedUsers, message.author))
-				{
-					user.channel.send(message.content, { tts: true });
-					message.delete();
-				}
+				user.channel.send(message.content, { tts: true });
+				message.delete();
 			}
 		}
 	}
 })
+
+function processCommand(receivedMessage) {
+    let fullCommand = receivedMessage.content.substr(1)
+    let splitCommand = fullCommand.split(" ")
+    let primaryCommand = splitCommand[0]
+    let arguments = splitCommand.slice(1)
+
+    if (primaryCommand == "voiceon") {
+        receivedMessage.reply('Ill be your voice!');
+		VoiceAssistedUsers.push(receivedMessage.author);
+    }
+}
 
 b1ll.login(token);
