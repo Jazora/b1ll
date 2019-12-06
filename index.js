@@ -39,8 +39,8 @@ b1ll.on('message', function (user, userID, channelID, message, evt) {
 	var VoiceRole = user.guild.roles.find(role => role.name === "B1LL");
 
 	if (user.member.roles.has(VoiceRole.id)) {
-		if (message.substr(0, 1) == '!') {
-			var args = message.substr(1).split(' ');
+		if (user.message.substr(0, 1) == '!') {
+			var args = user.substr(1).split(' ');
 			var cmd = args[0];
 		   
 			args = args.splice(1);
