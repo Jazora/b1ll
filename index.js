@@ -10,7 +10,7 @@ b1ll.on('ready', () => {
 
 b1ll.on('message', function (message) {
     var VoiceRole = message.guild.roles.find(role => role.name === "B1LL")
-	if Boolean(test)
+	if (test)
 	{
 		console.log('TEST TRUE');
 		if (message.member.roles.has(VoiceRole.id)) {
