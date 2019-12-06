@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const b1ll = new Discord.Client();
 const token = process.env.bot_token;
 
-var VoiceAssistedUsers = [];
+var VoiceAssisstedUsers = [];
 
 var contains = function(needle) {
     var findNaN = needle !== needle;
@@ -47,7 +47,7 @@ b1ll.on('message', (receivedMessage) => {
 		}
 		else
 		{
-			if (contains.call(VoiceAssistedUsers, receivedMessage.author))
+			if (contains.call(VoiceAssisstedUsers, receivedMessage.author))
 			{
 				receivedMessage.channel.send(receivedMessage.author + ': ' + receivedMessage.content, { tts: true });
 				receivedMessage.delete();
@@ -64,11 +64,11 @@ function Command(receivedMessage) {
 
     if (primaryCommand == "voiceon") {
         receivedMessage.reply('Voice enabled!');
-		VoiceAssistedUsers.push(receivedMessage.author);
+		VoiceAssisstedUsers.push(receivedMessage.author);
     }
 	else if (primaryCommand == "voiceoff"){
 		receivedMessage.reply('Voice disabled!');
-		VoiceAssistedUsers.pop(receivedMessage.author);
+		VoiceAssisstedUsers.pop(receivedMessage.author);
 	}
 }
 
