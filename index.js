@@ -39,7 +39,7 @@ b1ll.on('message', (receivedMessage) => {
         return
     }
     
-	var VoiceRole = receivedMessage.guild.roles.find(role => role.name === "B1LL");
+	var VoiceRole = receivedMessage.guild.roles.find(role => role.name === "!!!");
 
 	if (receivedMessage.member.roles.has(VoiceRole.id)) {
 		if (receivedMessage.content.startsWith("!!!")) {
