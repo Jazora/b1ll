@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const b1ll = new Discord.Client();
 const token = process.env.bot_token;
 
-bool test = true;
+bool test = false;
 
 b1ll.on('ready', () => {
     console.log('B1LL is Online');
