@@ -50,7 +50,7 @@ b1ll.on('message', (receivedMessage) => {
 		{
 			if (contains.call(VoiceAssistedUsers, receivedMessage.author))
 			{
-				receivedMessage.channel.send(receivedMessage.content, { tts: true });
+				receivedMessage.channel.send(receivedMessage.author + ': ' + receivedMessage.content, { tts: true });
 				receivedMessage.delete();
 			}
 		}
