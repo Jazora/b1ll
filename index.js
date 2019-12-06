@@ -35,17 +35,32 @@ b1ll.on('ready', () => {
     console.log('B1LL is Online');
 });
 
-b1ll.on('message', function (message) {
-    var VoiceRole = message.guild.roles.find(role => role.name === "B1LL")
-	if (contains.call(VoiceAssistedUsers, message.author))
-	{
-		console.log('TEST TRUE');
-		if (message.member.roles.has(VoiceRole.id)) {
-			message.channel.send(message.content, { tts: true });
-			message.delete();
+b1ll.on('message', function (user, userID, channelID, message, evt) {
+	var VoiceRole = message.guild.roles.find(role => role.name === "B1LL")
+	
+	if (message.member.roles.has(VoiceRole.id)) {
+		
+		if (message.substring(0, 1) == '!') {
+			var args = message.substring(1).split(' ');
+			var cmd = args[0];
+		   
+			args = args.splice(1);
+			
+			if (cmd == 'voiceon')
+			{
+				message.reply('Ill be your voice!');
+				VoiceAssistedUsers.push(message.author);
+			}
+			else
+			{
+				if (contains.call(VoiceAssistedUsers, message.author))
+				{
+					message.channel.send(message.content, { tts: true });
+					message.delete();
+				}
+			}
 		}
 	}
-    
 })
 
 b1ll.login(token);
