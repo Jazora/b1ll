@@ -1,6 +1,6 @@
 const Discord = require('discord.js')
 const b1ll = new Discord.Client();
-const token = 'process.env.b1ll;
+const token = 'process.env.BOT_TOKEN;
 
 b1ll.on('ready', () => {
     console.log('B1LL is Online');
