@@ -5,7 +5,6 @@ const token = process.env.bot_token;
 var VoiceAssistedUsers = [];
 
 var contains = function(needle) {
-    // Per spec, the way to identify NaN is that it is not equal to itself
     var findNaN = needle !== needle;
     var indexOf;
 
@@ -36,7 +35,7 @@ b1ll.on('ready', () => {
 });
 
 b1ll.on('message', (receivedMessage) => {
-    if (receivedMessage.author == b1ll.user) { // Prevent bot from responding to its own messages
+    if (receivedMessage.author == b1ll.user) {
         return
     }
     
@@ -44,7 +43,7 @@ b1ll.on('message', (receivedMessage) => {
 
 	if (receivedMessage.member.roles.has(VoiceRole.id)) {
 		if (receivedMessage.content.startsWith("!!!")) {
-			processCommand(receivedMessage)
+			Command(receivedMessage)
 		}
 		else
 		{
@@ -57,7 +56,7 @@ b1ll.on('message', (receivedMessage) => {
 	}
 })
 
-function processCommand(receivedMessage) {
+function Command(receivedMessage) {
     let fullCommand = receivedMessage.content.substr(3)
     let splitCommand = fullCommand.split(" ")
     let primaryCommand = splitCommand[0]
