@@ -64,9 +64,13 @@ function processCommand(receivedMessage) {
     let arguments = splitCommand.slice(1)
 
     if (primaryCommand == "voiceon") {
-        receivedMessage.reply('Ill be your voice!');
+        receivedMessage.reply('Voice enabled!');
 		VoiceAssistedUsers.push(receivedMessage.author);
     }
+	else if (primaryCommand == "voiceoff"){
+		receivedMessage.reply('Voice disabled!');
+		VoiceAssistedUsers.pop(receivedMessage.author);
+	}
 }
 
 b1ll.login(token);
