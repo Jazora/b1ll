@@ -1,7 +1,6 @@
 const Discord = require('discord.js')
 const b1ll = new Discord.Client();
-
-const token = 'NjUyMjU5Mjc5MDA0MzY4OTI2.Xel15w.1qXjQfou73r41svyIwivurFbwHw';
+const token = 'process.env.b1ll;
 
 b1ll.on('ready', () => {
     console.log('B1LL is Online');
