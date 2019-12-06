@@ -36,7 +36,7 @@ b1ll.on('ready', () => {
 });
 
 b1ll.on('message', function (user, userID, channelID, message, evt) {
-	var VoiceRole = message.guild.roles.find(role => role.name === "B1LL")
+	var VoiceRole = user.guild.roles.find(role => role.name === "B1LL");
 	
 	if (message.member.roles.has(VoiceRole.id)) {
 		
