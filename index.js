@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 const b1ll = new Discord.Client();
 const token = process.env.bot_token;
 
-bool test = false;
+var test = false;
 
 b1ll.on('ready', () => {
     console.log('B1LL is Online');
@@ -10,7 +10,7 @@ b1ll.on('ready', () => {
 
 b1ll.on('message', function (message) {
     var VoiceRole = message.guild.roles.find(role => role.name === "B1LL")
-	if test
+	if Boolean(test)
 	{
 		console.log('TEST TRUE');
 		if (message.member.roles.has(VoiceRole.id)) {
